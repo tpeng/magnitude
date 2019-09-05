@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 import bisect
 import difflib
 import gc
-import http.client
 import hashlib
 import heapq
 import lz4.frame
@@ -2930,6 +2929,7 @@ if _APSW_LIB == 'internal':
 
         def _new_connection(self):
             """Creates an HTTP connection"""
+            import http.client
             if self.parsed_url.scheme.lower() == 'http':
                 return http.client.HTTPConnection(
                     self.parsed_url.netloc, timeout=60)
